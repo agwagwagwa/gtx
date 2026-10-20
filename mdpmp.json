@@ -40,7 +40,7 @@
 
     "mods": [
         {
-            "path": "mods/appliedenergistics2-forge-15.4.11.jar",
+            "path": "mods/",
             "client": "required",
             "server": "required",
             "modrinth": {
@@ -50,6 +50,19 @@
             "curseforge": {
                 "projectID": 223794,
                 "fileID": "latest"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth": {
+                "project_id": "gregtechceu-modern",
+                "version": "latest"
+            },
+            "curseforge": {
+                "projectID": "890405",
+                "version": "latest"
             }
         }
     ]
