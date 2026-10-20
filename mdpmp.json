@@ -1,0 +1,50 @@
+{
+    "common": {
+        "packVersion": "1.0.0",
+        "packName": "GTX",
+        "configs": "overrides/"
+    },
+
+    "curseforge": {
+        "minecraft": {
+            "version": "1.20.1",
+            "modLoaders": [
+                {
+                    "id": "forge-47.4.20",
+                    "primary": true
+                }
+            ]
+        },
+        "manifestType": "minecraftModpack",
+        "manifestVersion": 1,
+        "name": "{packName}",
+        "version": "{packVersion}",
+        "author": "anonymousey",
+        "overrides": "overrides"
+    },
+
+    "modrinth": {
+        "game": "minecraft",
+        "formatVersion": 1,
+        "versionId": "{packVersion}",
+        "name": "{packName}",
+        "summary": "GTX VCS Test"
+    },
+
+    "mods": [
+        {
+            "path": "mods/appliedenergistics2-forge-15.4.11.jar",
+            "client": "required",
+            "server": "required",
+            "modrinth": {
+                "downloads": [
+                    "https://cdn.modrinth.com/data/XxWD5pD3/versions/jYgSnxye/appliedenergistics2-forge-15.4.11.jar"
+                ]
+            },
+            "curseforge": {
+                "projectID": 223794,
+                "fileID": 8991271
+            }
+        }
+    ]
+}
