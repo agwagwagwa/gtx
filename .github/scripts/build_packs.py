@@ -1,4 +1,4 @@
-"""Build CurseForge (.zip) and Modrinth (.mrpack) packs from mdpmp.json.
+"""Build CurseForge (.zip) and Modrinth (.mrpack) packs from mdpmp.json5 or mdpmp.json.
 
 Each entry in "mods" may contain:
   path               where the file goes in the instance (default: mods/<filename>);
@@ -14,7 +14,8 @@ Each entry in "mods" may contain:
     fileID           optional; "any"/"latest" (or missing) uses the newest file for
                      the pack's MC version
 
-Usage: python build_packs.py [--manifest mdpmp.json] [--out dist] [--tag v1.0.0]
+Usage: python build_packs.py [--manifest mdpmp.json5] [--out dist] [--tag v1.0.0]
+A .json5 manifest (comments, trailing commas) needs: pip install json5
 """
 
 import argparse
@@ -35,7 +36,7 @@ CF_KEY_URL = "https://cf.polymc.org/api"
 CF_FORGE_LOADER_TYPE = 1
 
 # Never copied into overrides/, wherever "configs" points.
-OVERRIDE_EXCLUDES = {".git", ".github", ".gitignore", ".gitattributes", "mdpmp.json", "dist", ".builder"}
+OVERRIDE_EXCLUDES = {".git", ".github", ".gitignore", ".gitattributes", "mdpmp.json", "mdpmp.json5", "dist", ".builder"}
 
 
 def warn(msg):
@@ -196,16 +197,29 @@ def write_pack(dest, manifest_name, manifest, overrides):
     print(f"Wrote {dest}")
 
 
+def load_manifest(path):
+    text = path.read_text(encoding="utf-8")
+    if path.suffix != ".json5":
+        return json.loads(text)
+    try:
+        import json5
+    except ImportError:
+        fail("Reading a .json5 manifest needs the json5 package: pip install json5")
+    return json5.loads(text)
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--manifest", default="mdpmp.json")
+    parser.add_argument("--manifest", help="defaults to mdpmp.json5 if it exists, otherwise mdpmp.json")
     parser.add_argument("--out", default="dist")
     parser.add_argument("--tag", help="release tag, used as the pack version (a leading 'v' is dropped); "
                                       "defaults to packVersion from the manifest")
     args = parser.parse_args()
 
+    if not args.manifest:
+        args.manifest = "mdpmp.json5" if Path("mdpmp.json5").exists() else "mdpmp.json"
     manifest_path = Path(args.manifest)
-    config = json.loads(manifest_path.read_text(encoding="utf-8"))
+    config = load_manifest(manifest_path)
     common = config["common"]
 
     # The release tag is the pack version; packVersion in the manifest is only a

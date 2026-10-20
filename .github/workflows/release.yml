@@ -32,6 +32,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install dependencies
+        run: pip install json5
+
       - name: Build packs
         run: python .builder/.github/scripts/build_packs.py --tag "$TAG"
         env:
