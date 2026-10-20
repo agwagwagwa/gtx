@@ -1,7 +1,8 @@
 """Build CurseForge (.zip) and Modrinth (.mrpack) packs from mdpmp.json.
 
 Each entry in "mods" may contain:
-  path               where the file goes in the instance (default: mods/<filename>)
+  path               where the file goes in the instance (default: mods/<filename>);
+                     a path ending in "/" is a folder and the filename is appended
   client, server     "required" | "optional" | "unsupported" (default: "required")
   modrinth:
     downloads        direct URLs; the file is downloaded to compute hashes/size
@@ -106,6 +107,12 @@ def modrinth_lookup(project, version, common):
     return next((f for f in files if f["primary"]), files[0])
 
 
+def mod_path(mod, filename):
+    """A path ending in "/" is a folder to put the file in; otherwise it's the full path."""
+    path = mod.get("path") or "mods/"
+    return path + filename if path.endswith("/") else path
+
+
 def modrinth_file(mod, common):
     mr = mod["modrinth"]
     project = mr.get("project_id") or mr.get("slug")
@@ -122,7 +129,7 @@ def modrinth_file(mod, common):
         fail(f"Modrinth entry needs 'downloads' or 'project_id'/'slug': {mr}")
 
     return {
-        "path": mod.get("path") or f"mods/{filename}",
+        "path": mod_path(mod, filename),
         "hashes": hashes,
         "env": {"client": mod.get("client", "required"), "server": mod.get("server", "required")},
         "downloads": downloads,
