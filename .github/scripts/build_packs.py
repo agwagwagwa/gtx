@@ -15,6 +15,7 @@ Each entry in "mods" may contain:
                      the pack's MC version
 
 Usage: python build_packs.py [--manifest mdpmp.json5] [--out dist] [--tag v1.0.0]
+                             [--platform all|curseforge|modrinth]
 A .json5 manifest (comments, trailing commas) needs: pip install json5
 """
 
@@ -214,7 +215,11 @@ def main():
     parser.add_argument("--out", default="dist")
     parser.add_argument("--tag", help="release tag, used as the pack version (a leading 'v' is dropped); "
                                       "defaults to packVersion from the manifest")
+    parser.add_argument("--platform", choices=["all", "curseforge", "modrinth"], default="all",
+                        help="which pack to build (default: both)")
     args = parser.parse_args()
+    build_cf = args.platform in ("all", "curseforge")
+    build_mr = args.platform in ("all", "modrinth")
 
     if not args.manifest:
         args.manifest = "mdpmp.json5" if Path("mdpmp.json5").exists() else "mdpmp.json"
@@ -233,19 +238,27 @@ def main():
     mr_index = fill_placeholders(config["modrinth"], common)
     cf_manifest["files"], mr_index["files"] = [], []
 
-    for mod in config["mods"]:
-        mr, cf = mod.get("modrinth", {}), mod.get("curseforge", {})
-        name = (mod.get("path") or mr.get("slug") or mr.get("project_id")
-                or f"curseforge:{cf.get('projectID')}")
+    for i, mod in enumerate(config["mods"]):
+        mr, cf = mod.get("modrinth") or {}, mod.get("curseforge") or {}
+        # An empty or missing ID means the mod isn't published on that platform.
+        on_cf = bool(cf.get("projectID"))
+        on_mr = bool(mr.get("project_id") or mr.get("slug") or mr.get("downloads"))
+        path = mod.get("path", "")
+        name = ((path if path and not path.endswith("/") else None)
+                or mr.get("slug") or mr.get("project_id")
+                or (f"curseforge:{cf['projectID']}" if on_cf else None)
+                or f"mods[{i}]")
         print(f"Resolving {name}")
-        if "curseforge" in mod:
-            cf_manifest["files"].append(curseforge_file(mod, common))
-        else:
-            warn(f"{name} has no curseforge entry; it will be missing from the CurseForge pack")
-        if "modrinth" in mod:
-            mr_index["files"].append(modrinth_file(mod, common))
-        else:
-            warn(f"{name} has no modrinth entry; it will be missing from the Modrinth pack")
+        if build_cf:
+            if on_cf:
+                cf_manifest["files"].append(curseforge_file(mod, common))
+            else:
+                warn(f"{name} has no curseforge entry; it will be missing from the CurseForge pack")
+        if build_mr:
+            if on_mr:
+                mr_index["files"].append(modrinth_file(mod, common))
+            else:
+                warn(f"{name} has no modrinth entry; it will be missing from the Modrinth pack")
 
     # Keep "dependencies" at the end, matching the layout Modrinth itself exports.
     mr_index["dependencies"] = mr_index.pop("dependencies")
@@ -254,8 +267,10 @@ def main():
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     base = f"{common['packName']}-{common['packVersion']}"
-    write_pack(out / f"{base}.zip", "manifest.json", cf_manifest, overrides)
-    write_pack(out / f"{base}.mrpack", "modrinth.index.json", mr_index, overrides)
+    if build_cf:
+        write_pack(out / f"{base}.zip", "manifest.json", cf_manifest, overrides)
+    if build_mr:
+        write_pack(out / f"{base}.mrpack", "modrinth.index.json", mr_index, overrides)
 
 
 if __name__ == "__main__":
