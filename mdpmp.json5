@@ -39,21 +39,6 @@
     },
 
     "mods": [
-        //ae2 + deps
-        {
-            "path": "mods/",
-            "client": "required",
-            "server": "required",
-            "modrinth": {
-                "project_id": "ae2",
-                "version": "latest"
-            },
-            "curseforge": {
-                "projectID": 223794,
-                "fileID": "latest"
-            }
-        },
-
         //gtceu-m
         {
             "path": "mods/",
