@@ -39,6 +39,7 @@
     },
 
     "mods": [
+        //ae2 + deps
         {
             "path": "mods/",
             "client": "required",
@@ -52,18 +53,370 @@
                 "fileID": "latest"
             }
         },
+
+        //gtceu-m
         {
             "path": "mods/",
             "client": "required",
             "server": "required",
             "modrinth": {
-                "project_id": "gregtechceu-modern",
-                "version": "latest"
+                "project_id": "gregtechceu-modern"
             },
             "curseforge": {
-                "projectID": "890405",
-                "version": "latest"
+                "projectID": "890405"
             }
-        }
+        },
+
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"appleskin"
+            },
+            "curseforge":{
+                "projectID": "248787"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"architectury-api"
+            },
+            "curseforge":{
+                "projectID": "419699"
+            }
+        },
+
+        //not the same mod, but the same functionality.
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"nbt-tooltips"
+            },
+            "curseforge":{
+                "projectID": "682363"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"cloth-config"
+            },
+            "curseforge":{
+                "projectID": "348521"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"" //configured is missing for modrinth, and mrCrayfish didnt add any build artifacts before 1.21.6 :/
+                                // https://github.com/MrCrayfish/Configured/releases?page=2#release-v1.21.5-2.6.1
+            },
+            "curseforge":{
+                "projectID": "457570"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"creeper-confetti"
+            },
+            "curseforge":{
+                "projectID": "222548"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"curios"
+            },
+            "curseforge":{
+                "projectID": "309927"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"" //decorated buildings is not published on modrinth. SAD!
+            },
+            "curseforge":{
+                "projectID": "957508"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"effortless-building"
+            },
+            "curseforge":{
+                "projectID": "302113"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"emi"
+            },
+            "curseforge":{
+                "projectID": "580555"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"ferrite-core"
+            },
+            "curseforge":{
+                "projectID": "429235"
+            }
+        },
+
+        //FTB Mods
+        // None of these exist for modrinth, as FTB refuse to publish there for licence reasons.
+        // polyfill?
+
+        { //FTB Chunks
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "curseforge":{
+                "projectID": "314906"
+            }
+        },
+        { //FTB Filters
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "curseforge":{
+                "projectID": "943925"
+            }
+        },
+        { //FTB Library
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "curseforge":{
+                "projectID": "404465"
+            }
+        },
+        { //FTB Quests
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "curseforge":{
+                "projectID": "289412"
+            }
+        },
+        { //FTB Teams
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "curseforge":{
+                "projectID": "404468"
+            }
+        },
+        { //FTB XMod Compat
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "curseforge":{
+                "projectID": "889915"
+            }
+        },
+        { //inventorysorter
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "curseforge":{
+                "projectID": "240633"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"iron-chests"
+            },
+            "curseforge":{
+                "projectID": "228756"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"jade"
+            },
+            "curseforge":{
+                "projectID": "324717"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"kubejs-additions"
+            },
+            "curseforge":{
+                "projectID": "594387"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"kubejs"
+            },
+            "curseforge":{
+                "projectID": "238086"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"libx"
+            },
+            "curseforge":{
+                "projectID": "412525"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"lootjs"
+            },
+            "curseforge":{
+                "projectID": "570630"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"modelfix"
+            },
+            "curseforge":{
+                "projectID": "676136"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"mouse-tweaks"
+            },
+            "curseforge":{
+                "projectID": "60089"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"no-chat-reports"
+            },
+            "curseforge":{
+                "projectID": "634062"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"no-telemetry"
+            },
+            "curseforge":{
+                "projectID": "530816"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"phantom-remover"
+            },
+            "curseforge":{
+                "projectID": "989412"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"rhino"
+            },
+            "curseforge":{
+                "projectID": "416294"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"shulkerboxtooltip"
+            },
+            "curseforge":{
+                "projectID": "315811"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"travel-anchors"
+            },
+            "curseforge":{
+                "projectID": "413234"
+            }
+        },
+        {
+            "path": "mods/",
+            "client": "required",
+            "server": "required",
+            "modrinth":{
+                "project_id":"wooden-hopper"
+            },
+            "curseforge":{
+                "projectID": "440985"
+            }
+        },
+
     ]
 }
