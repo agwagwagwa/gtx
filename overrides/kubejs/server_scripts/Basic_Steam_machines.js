@@ -63,17 +63,6 @@ ServerEvents.recipes(event => {
              C:'gtceu:bronze_brick_casing',
              E:'gtceu:small_bronze_gear',
             })
-
-
-
-
-
-
-
-
-
-
-
 /*
             {P:'gtceu:bronze_small_fluid_pipe',
              C:'gtceu:bronze_brick_casing',
@@ -82,11 +71,8 @@ ServerEvents.recipes(event => {
              E:'gtceu:small_bronze_gear',
              F:'minecraft:furnace',
 */
-
-
-
-
-
-
+    event.remove({id:/gtceu:shaped\/steam_.*_steel/})
+    event.remove({id:"gtceu:shaped/steam_oven_from_hp",})
+    event.remove({id:"gtceu:shaped/steam_grinder_from_hp",})
 
 })
