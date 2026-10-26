@@ -1,0 +1,8 @@
+{
+    "block.gtx.added_by_gtx.tooltip": "§8§oAdded by GTX",
+
+    "item.gtx.ore_ulv": "§eSteam§8§o tier ore",
+    "item.gtx.ore_lv": "§7LV§8§o tier ore",
+    "item.gtx.ore_mv": "§bMV§8§o tier ore",
+    "item.gtx.ore_hv": "§6HV§8§o tier ore"
+}
