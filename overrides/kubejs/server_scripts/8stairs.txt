@@ -1,0 +1,29 @@
+ServerEvents.recipes(event => {
+    stairname.forEach(stair => {
+        event.remove({ id: stair })
+    })
+    stairarraymashed.forEach(([block, stair]) => {
+        event.shaped(
+            Item.of(stair, 8),
+            [
+                'A  ',
+                'AA ',
+                'AAA',],
+            {
+                A: block
+            })
+    })
+});
+
+//hi there is a bug in kubejs that stops the tags from being properly loaded on first boot
+//https://www.reddit.com/r/feedthebeast/comments/171d4os/kubejs_how_to_make_script_wait_for_mod_completely/
+//so this is a workaround and this code makes it force a reload on server start (fixes the tags not being applied)
+global._evil_global_has_reloaded = false;
+
+ServerEvents.loaded(event => {
+    if (global._evil_global_has_reloaded) return;
+
+    console.log("Forcing reload to work around KubeJS bugs...")
+    Utils.server.runCommand("reload");  
+    global._evil_global_has_reloaded = true;
+});

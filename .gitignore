@@ -1,1 +1,5 @@
 dist/
+kubejs/.idea
+kubejs/README.txt
+kubejs/kubejs.code-workspace
+README.txt
