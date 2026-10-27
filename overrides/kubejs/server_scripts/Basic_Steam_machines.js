@@ -85,5 +85,7 @@ ServerEvents.recipes(event => {
     event.remove({id:/gtceu:shaped\/steam_.*_steel/})
     event.remove({id:"gtceu:shaped/steam_oven_from_hp",})
     event.remove({id:"gtceu:shaped/steam_grinder_from_hp",})
+    event.remove({id:"gtceu:shaped/steel_bricks_hull",})
+
 
 })
