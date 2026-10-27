@@ -71,6 +71,17 @@ ServerEvents.recipes(event => {
              E:'gtceu:small_bronze_gear',
              F:'minecraft:furnace',
 */
+    event.remove({id:'gtceu:shaped/bronze_bricks_hull'})
+    event.shaped(
+        Item.of('3x gtceu:bronze_brick_casing'),
+            [ 'PPP',
+              'P P',
+              'BBB'],
+            {P:'gtceu:bronze_plate',
+             B:'gtceu:firebricks',
+             })
+
+//removing hight pressure steam machines VVV
     event.remove({id:/gtceu:shaped\/steam_.*_steel/})
     event.remove({id:"gtceu:shaped/steam_oven_from_hp",})
     event.remove({id:"gtceu:shaped/steam_grinder_from_hp",})

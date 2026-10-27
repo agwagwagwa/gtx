@@ -5,7 +5,9 @@ GTCEuStartupEvents.registry('gtceu:recipe_type', event => {
         .setMaxIOSize(3, 1, 0, 0)
         .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW , FillDirection.LEFT_TO_RIGHT);
 });
+
 GTCEuStartupEvents.registry('gtceu:machine', event => {
+
 	event.create('primitive_furnace', 'multiblock')
 		.rotationState(RotationState.NON_Y_AXIS)
 		.recipeType('primitive_furnace')
@@ -48,3 +50,6 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 			})
 		);
 });
+
+
+

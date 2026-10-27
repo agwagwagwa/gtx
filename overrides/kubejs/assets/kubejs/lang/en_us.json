@@ -6,6 +6,7 @@
     "item.gtx.ore_mv": "§bMV§8§o tier ore",
     "item.gtx.ore_hv": "§6HV§8§o tier ore",
     "block.gtceu.primitive_furnace":"Primitive Furnace",
-    "gtceu.primitive_furnace":"Primitive Furnace"
-
+    "gtceu.primitive_furnace":"Primitive Furnace",
+    "block.gtceu.primitive_mixer":"Primitive Mixer",
+    "gtceu.primitive_mixer":"Primitive Mixer"
 }
