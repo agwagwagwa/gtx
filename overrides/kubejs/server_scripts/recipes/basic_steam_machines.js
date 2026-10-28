@@ -80,6 +80,20 @@ ServerEvents.recipes(event => {
             {P:'gtceu:bronze_plate',
              B:'gtceu:firebricks',
              })
+
+    event.remove({id:'gtceu:shaped/casing_bronze_bricks'})
+    event.remove({id:'gtceu:assembler/casing_bronze_bricks'})
+
+    event.shaped(
+        Item.of('2x gtceu:steam_machine_casing'),
+            [ 'PBP',
+              'PHP',
+              'PBP'],
+            {P:'gtceu:bronze_plate',
+             B:'gtceu:firebricks',
+             H:'#forge:tools/hammers'
+             })
+
 //removing hight pressure steam machines VVV
     event.remove({id:/gtceu:shaped\/steam_.*_steel/})
     event.remove({id:"gtceu:shaped/steam_oven_from_hp",})

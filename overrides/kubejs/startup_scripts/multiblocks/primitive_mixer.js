@@ -8,8 +8,6 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 	event.create('primitive_mixer', 'multiblock')
 		.rotationState(RotationState.NON_Y_AXIS)
 		.recipeType('primitive_mixer')
-        // .recipeModifier((machine, recipe) => Java.loadClass('com.gregtechceu.gtceu.common.machine.multiblock.steam.SteamParallelMultiblockMachine').SteamParallelMultiblockMachine.recipeModifier(machine, recipe), true)
-
 		.pattern(definition => FactoryBlockPattern.start()
 			.aisle(' FFF ', ' BBB ', '     ','     ')
 			.aisle('FBBBF', 'B   B', '     ','     ')
