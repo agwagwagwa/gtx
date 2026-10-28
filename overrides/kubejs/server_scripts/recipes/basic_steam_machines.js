@@ -80,12 +80,42 @@ ServerEvents.recipes(event => {
             {P:'gtceu:bronze_plate',
              B:'gtceu:firebricks',
              })
-
 //removing hight pressure steam machines VVV
     event.remove({id:/gtceu:shaped\/steam_.*_steel/})
     event.remove({id:"gtceu:shaped/steam_oven_from_hp",})
     event.remove({id:"gtceu:shaped/steam_grinder_from_hp",})
     event.remove({id:"gtceu:shaped/steel_bricks_hull",})
 
+//making fireclay craftable before you get into steam age since you need it for the blocks
+   event.shaped(
+        Item.of('minecraft:clay'),
+            [ 'CC',
+              'CC',],
+            {C:'minecraft:clay_ball',})
 
+
+    event.remove({id:'gtceu:shapeless/clay_ball_to_dust'})
+    event.remove({id:'gtceu:shapeless/clay_block_to_dust'})
+
+    event.remove({id:'gtceu:shapeless/brick_to_dust'})
+    event.remove({id:'gtceu:shapeless/brick_block_to_dust'})
+    event.shapeless(
+        Item.of('gtceu:clay_dust',2),
+            ['#forge:tools/mortars',
+             'minecraft:clay'])
+
+    event.shapeless(
+        Item.of('gtceu:brick_dust',2),
+            ['#forge:tools/mortars',
+             'minecraft:bricks'])
+    event.shapeless(
+        Item.of('gtceu:compressed_fireclay',1),
+            ['gtceu:brick_wooden_form',
+             'gtceu:fireclay_dust'])
+
+    event.recipes.gtceu.alloy_smelter('brick_dust_and_clay_dust_to_fire_clay_brick')
+        .itemInputs('2x gtceu:brick_dust','2x gtceu:clay_dust')
+        .itemOutputs('4x gtceu:firebrick')
+        .duration(205)
+        .EUt(4)
 })

@@ -17,6 +17,7 @@ ServerEvents.recipes(event => {
         .inputFluids(Fluid.of('minecraft:water', 1000))
         .itemOutputs('gtceu:lead_dust')
         .outputFluids(Fluid.of('gtceu:sulfuric_acid', 1000))//FIXME NEEDS TO NOT BE SULFURIC ACID NEEDS TO BE SULFURIC WASTE WATER
-        .duration(100);
+        .EUt(4)
+        .duration(100)
 
 })

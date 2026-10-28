@@ -8,6 +8,8 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
 	event.create('primitive_mixer', 'multiblock')
 		.rotationState(RotationState.NON_Y_AXIS)
 		.recipeType('primitive_mixer')
+        // .recipeModifier((machine, recipe) => Java.loadClass('com.gregtechceu.gtceu.common.machine.multiblock.steam.SteamParallelMultiblockMachine').SteamParallelMultiblockMachine.recipeModifier(machine, recipe), true)
+
 		.pattern(definition => FactoryBlockPattern.start()
 			.aisle(' FFF ', ' BBB ', '     ','     ')
 			.aisle('FBBBF', 'B   B', '     ','     ')
@@ -22,7 +24,8 @@ GTCEuStartupEvents.registry('gtceu:machine', event => {
             .where('B', Predicates.blocks('gtceu:bronze_brick_casing'))
             .where('R', Predicates.blocks('gtceu:bronze_frame'))
             .where('G', Predicates.blocks('gtceu:bronze_gearbox'))
-            .where('S', Predicates.blocks('gtceu:steam_machine_casing'))
+            .where('S', Predicates.blocks('gtceu:steam_machine_casing')
+                .or(Predicates.abilities(PartAbility.STEAM).setExactLimit(1)))
             .where('H', Predicates.blocks('gtceu:steam_input_hatch'))
 			.where('#', Predicates.any())
 			.where('C', Predicates.controller(Predicates.blocks(definition.get())))
