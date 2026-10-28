@@ -132,4 +132,45 @@ ServerEvents.recipes(event => {
         .itemOutputs('4x gtceu:firebrick')
         .duration(205)
         .EUt(4)
+
+//primitive water pump recipe changes to using lead
+    event.remove({id:'gtceu:shaped/pump_deck'})
+    event.shaped(
+        Item.of('2x gtceu:pump_deck'),
+            [ 'LTL',
+              'HCS',],
+            {H:'#forge:tools/hammers',
+             L:'gtceu:lead_screw',
+             S:'#forge:tools/screwdrivers',
+             T:'gtceu:treated_wood_planks',
+             C:'minecraft:cobblestone_slab'
+             })
+
+    event.remove({id:'gtceu:shaped/pump_hatch'})
+    event.shaped(
+        Item.of('gtceu:pump_hatch'),
+            [ 'LSL',
+              'RTR',
+              'CTC'],
+            {L:'gtceu:lead_screw',
+             S:'#forge:tools/screwdrivers',
+             R:'gtceu:lead_ring',
+             T:'gtceu:treated_wood_planks',
+             C:'minecraft:cobblestone_slab'
+             })
+
+    event.remove({id:'gtceu:shaped/primitive_pump'})
+    event.shaped(
+        Item.of('gtceu:primitive_pump'),
+            [ 'HLS',
+              'TET',
+              'CRC'],
+            {L:'gtceu:lead_screw',
+             H:'#forge:tools/hammers',
+             S:'#forge:tools/screwdrivers',
+             R:'gtceu:lead_ring',
+             T:'gtceu:treated_wood_planks',
+             C:'minecraft:cobblestone_slab',
+             E:'gtceu:lead_rotor',
+             })
 })
